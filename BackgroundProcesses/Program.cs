@@ -13,9 +13,16 @@ namespace BackgroundProcesses
         static void Main(string[] args)
         {
             Process[] plist = Process.GetProcesses();
+            Console.WriteLine("--FOREGROUND--");
             foreach (Process p in plist)
             {
                 if (hasWindowStyle(p))
+                    Console.WriteLine(p.ProcessName);
+            }
+            Console.WriteLine("\n--BACKGROUND--");
+            foreach (Process p in plist)
+            {
+                if (!hasWindowStyle(p))
                     Console.WriteLine(p.ProcessName);
             }
             Console.Read();
